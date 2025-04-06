@@ -5,4 +5,4 @@ Install jack_delay or jack_iodelay (jack_iodelay usually comes with jack-example
 Run as `python latency_test.py` and read instructions in the app. 
 
 
-![](https://github.com/magillos/jack_delay-GUI/main/Latency_test.png)
+![](https://github.com/magillos/jack_delay-GUI/blob/main/Latency_test.png)
