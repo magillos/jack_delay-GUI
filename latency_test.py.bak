@@ -15,24 +15,14 @@ from PyQt6.QtGui import (QColor, QPainter, QBrush, QPalette, QPen,
 def custom_unraisable_hook(unraisable):
     """
     Custom handler for unraisable exceptions that filters out JACK callback errors
-    and other known harmless exceptions from JACK-related operations.
     """
-    # Convert error message and traceback to string for easier pattern matching
-    err_msg = str(unraisable.err_msg) if hasattr(unraisable, 'err_msg') else ''
-    exc_value = str(unraisable.exc_value) if hasattr(unraisable, 'exc_value') else ''
-    
-    # Patterns that indicate JACK-related callback errors we want to suppress
-    suppress_patterns = [
-        ('cffi callback', 'callback_wrapper'),  # JACK port registration callbacks
-        ('jack.py', 'AssertionError'),          # Port wrapping assertions
-        ('_wrap_port_ptr', 'assert False'),     # Specific port wrapping failures
-    ]
-    
-    # Check if any of our patterns match the error
-    for pattern in suppress_patterns:
-        if all(p.lower() in err_msg.lower() or p.lower() in exc_value.lower() for p in pattern):
-            return  # Silently ignore these errors
-            
+    # Check if this is a JACK callback error we want to suppress
+    if (isinstance(unraisable.exc_value, AssertionError) and
+        'callback_wrapper' in str(unraisable.err_msg) and
+        'jack.py' in str(unraisable.err_msg)):
+        # Silently ignore these specific JACK callback assertion errors
+        return
+
     # For other unraisable exceptions, use the default handler
     sys.__unraisablehook__(unraisable)
 

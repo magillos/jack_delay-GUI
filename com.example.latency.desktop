@@ -1,0 +1,9 @@
+[Desktop Entry]
+StartupWMClass=jack_delay-GUI
+Name=jack_delay-GUI
+Comment=jack_delay GUI
+Exec=jack_delay-GUI %u
+Icon=Latency_test
+Terminal=false
+Type=Application
+Categories=Utility;
