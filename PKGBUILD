@@ -6,7 +6,7 @@ pkgdesc="Latency testing GUI for JACK using PyQt6 and python-jack"
 arch=('any')
 url="https://github.com/magillos/jack_delay-GUI"
 license=('GPL3')
-depends=('python-pyqt6' 'python-jack-client' 'jack2' 'jack_delay')
+depends=('python-pyqt6' 'python-jack-client' 'jack_delay')
 source=(
   "https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/LICENSE"
   "https://raw.githubusercontent.com/magillos/jack_delay-GUI/main/latency_test.py"
