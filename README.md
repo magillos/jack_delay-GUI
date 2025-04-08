@@ -4,6 +4,6 @@ Install jack_delay or jack_iodelay (jack_iodelay usually comes with jack-example
 
 Run as `python latency_test.py` and read instructions in the app. 
 
-App is availble on AUR as jack_delay-gui
+App is availble on AUR as **jack_delay-gui**.
 
 ![](https://github.com/magillos/jack_delay-GUI/blob/main/Latency_test.png)
